@@ -5,7 +5,7 @@ import { NavigationContainer } from '@react-navigation/native';
 import { createStackNavigator } from '@react-navigation/stack';
 import {Colors} from 'react-native/Libraries/NewAppScreen';
 
-function ProfileScreen({ navigation }) {
+function ChatScreen({ navigation }) {
   return (
     <>
     <StatusBar barStyle="dark-content" />
@@ -16,10 +16,10 @@ function ProfileScreen({ navigation }) {
         <HeaderMenu navegacao={navigation}></HeaderMenu>
 
         <View style={{ flex: 1, alignItems: 'center', justifyContent: 'center' }}>
-      <Text>Profile Screen</Text>
+      <Text>Chat Screen</Text>
       <Button
-        title="Go to Test"
-        onPress={() => navigation.navigate('Test')}
+        title="Go to HOME"
+        onPress={() => navigation.navigate('Home')}
       />
     </View>
 
@@ -75,4 +75,4 @@ const styles = StyleSheet.create({
     alignItems:'center',
   }
 });
-export default ProfileScreen
+export default ChatScreen

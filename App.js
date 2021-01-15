@@ -9,8 +9,8 @@
 import React from 'react';
 import HeaderMenu from './Components/HeaderMenu';
 import HomeScreen from './Screens/HomeScreen';
-import TestScreen from './Screens/TestScreen';
 import ProfileScreen from './Screens/ProfileScreen';
+import ChatScreen from './Screens/ChatScreen';
 import Header2 from './Header2';
 import FontAwesome5 from 'react-native-vector-icons/FontAwesome5';
 import IconAnt from 'react-native-vector-icons/AntDesign';
@@ -39,24 +39,21 @@ import {
 } from 'react-native/Libraries/NewAppScreen';
 
 const Stack = createStackNavigator();
-function HomeScreen2() {
-  return (
-    <View style={{ flex: 1, alignItems: 'center', justifyContent: 'center' }}>
-      <Text>Home Screen</Text>
-    </View>
-  );
-}
+
 const App: () => React$Node = () => {
   return (
     <NavigationContainer>{
       <Stack.Navigator initialRouteName="Home"
-      options={{ headerTitle: props => <HeaderMenu {...props} /> }}
+      screenOptions={{
+        headerShown: false
+      }}
       >
         <Stack.Screen name="Home" component={HomeScreen} options={{ title: 'Overview' }}  />
         <Stack.Screen name="Profile" component={ProfileScreen} options={{ headerTitle: props => <HeaderMenu {...props} />, headerLeft : null  }}/>
-        <Stack.Screen name="Test" component={TestScreen} options={{ headerTitle: props => <HeaderMenu {...props} />, headerLeft : null  }}/>
+        <Stack.Screen name="Chat" component={ChatScreen} options={{ headerTitle: props => <HeaderMenu {...props} />, headerLeft : null  }}/>
       </Stack.Navigator>
     }</NavigationContainer>
+
   );
 };
 
