@@ -42,7 +42,17 @@ const Stack = createStackNavigator();
 
 const App: () => React$Node = () => {
   return (
-    <NavigationContainer>{
+    <>
+    <StatusBar barStyle="dark-content" />
+    <SafeAreaView>
+      <ScrollView
+        contentInsetAdjustmentBehavior="automatic"
+        style={styles.scrollView}>
+      <HeaderMenu></HeaderMenu>
+      </ScrollView>
+    </SafeAreaView>
+    </>
+    /*<NavigationContainer>{
       <Stack.Navigator initialRouteName="Home"
       screenOptions={{
         headerShown: false
@@ -52,7 +62,7 @@ const App: () => React$Node = () => {
         <Stack.Screen name="Profile" component={ProfileScreen} options={{ headerTitle: props => <HeaderMenu {...props} />, headerLeft : null  }}/>
         <Stack.Screen name="Chat" component={ChatScreen} options={{ headerTitle: props => <HeaderMenu {...props} />, headerLeft : null  }}/>
       </Stack.Navigator>
-    }</NavigationContainer>
+    }</NavigationContainer>*/
 
   );
 };
