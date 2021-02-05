@@ -1,6 +1,8 @@
 import React,{ useState, useEffect } from 'react'
 import { Text, View, StyleSheet, Button,TouchableHighlight, Image } from 'react-native'
 import Icon from 'react-native-vector-icons/Ionicons'
+import Entypo from 'react-native-vector-icons/Entypo'
+import Feather from 'react-native-vector-icons/Feather'
 import FontAwesome5 from 'react-native-vector-icons/FontAwesome5'
 import { NavigationContainer } from '@react-navigation/native';
 import { createStackNavigator } from '@react-navigation/stack';
@@ -11,12 +13,30 @@ import ChatScreen from '../Screens/ChatScreen';
 function FooterMenuBttons(){
     return <>
     <View style={styles.footer}>
-    <Text>Btoes</Text>
-        <View style={styles.playbutton}>
-            <View style={styles.square}></View>
-        </View>
-    <Text>Btoes</Text>
-    <Text>Btoes</Text>
+    <TouchableHighlight
+    activeOpacity={0.6}
+    underlayColor="#DDDDDD"
+    >
+    <Feather name="square" size={30} color="#FF69B4"></Feather>
+    </TouchableHighlight>
+    <TouchableHighlight
+    activeOpacity={0.6}
+    underlayColor="#DDDDDD" 
+    >
+    <Feather name="x" size={30} color="#4F8EF7"></Feather>
+    </TouchableHighlight>
+    <TouchableHighlight
+    activeOpacity={0.6}
+    underlayColor="#DDDDDD" 
+    >
+    <Entypo name="circle" size={30} color="#FF0000"></Entypo>
+    </TouchableHighlight>
+    <TouchableHighlight
+    activeOpacity={0.6}
+    underlayColor="#DDDDDD" 
+    >
+    <Feather name="triangle" size={30} color="#90EE90"></Feather>
+    </TouchableHighlight>
     </View>
     </>;
 }
