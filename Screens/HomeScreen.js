@@ -1,38 +1,117 @@
-import React from 'react'
-import { Button,Text, View,StatusBar,SafeAreaView,ScrollView,StyleSheet } from 'react-native'
+import React, { useState, useEffect } from 'react';
+import { Image, Button, Text, View, StatusBar, SafeAreaView, ScrollView, StyleSheet, TouchableHighlight } from 'react-native';
 import { NavigationContainer } from '@react-navigation/native';
 import { createStackNavigator } from '@react-navigation/stack';
 import HeaderMenu from '../Components/HeaderMenu';
-import {Colors} from 'react-native/Libraries/NewAppScreen';
+import FooterMenuBttons from '../Components/FooterMenuButtons';
+import { Colors } from 'react-native/Libraries/NewAppScreen';
+import Feather from 'react-native-vector-icons/Feather'
+import Entypo from 'react-native-vector-icons/Entypo'
+import data from '../data';
 
 function HomeScreen({ navigation }) {
+  var boleano = false;
+  const [value, setValue] = useState(1);
+  const [pessoaIndex,setIndex] = useState(0);
+
+  const advancePessoa = () => setIndex(pessoaIndex+1);
+  const backPessoa = () => setIndex(pessoaIndex-1);
+  const incrementValue = () => setValue(value + 1);
+
   return (
     <>
-    <StatusBar barStyle="dark-content" />
-    <SafeAreaView>
-      <ScrollView
-        contentInsetAdjustmentBehavior="automatic"
-        style={styles.scrollView}>
-        <HeaderMenu navegacao={navigation}></HeaderMenu>
+      <StatusBar barStyle="dark-content" />
+      <SafeAreaView>
+        <ScrollView
+          contentInsetAdjustmentBehavior="automatic"
+          style={styles.scrollView}>
+          <View style={{ flex: 1, alignItems: 'center', justifyContent: 'center' }}>
+            <Text style={{ fontSize: 20 }}> {data[pessoaIndex].name}, {data[pessoaIndex].age}</Text>
+          </View>
 
-        <View style={{ flex: 1, alignItems: 'center', justifyContent: 'center' }}>
-      <Text>Home Screen</Text>
-      <Button
-        title="Go to Details"
-        onPress={() => navigation.navigate('Profile')}
-      />
-    
-    </View>
+        </ScrollView>
+      </SafeAreaView>
 
-      </ScrollView>
-    </SafeAreaView>
+      <View style={{
+        flex: 1,
+        flexDirection: 'row',
+        alignItems: 'center',
+        justifyContent: 'space-between'
+      }}>
+
+        <TouchableHighlight
+          activeOpacity={0.6}
+          underlayColor="#DDDDDD"
+          onPress={backPessoa}
+        >
+          <Feather name="square" size={20} color="#FF69B4"></Feather>
+        </TouchableHighlight>
+        <View style={{ flex: 1, alignItems: 'center', justifyContent: 'center', flexDirection: 'row' }}>
+        <Image
+          style={styles.images}
+          source={{
+            uri: data[pessoaIndex].image_one,
+          }}
+        />
+        <Image
+          style={styles.images}
+          source={{
+            uri: data[pessoaIndex].image_two,
+          }}
+        />
+      </View>
+        <TouchableHighlight
+          activeOpacity={0.6}
+          underlayColor="#DDDDDD"
+        >
+          <Feather name="triangle" size={20} color="#90EE90"></Feather>
+        </TouchableHighlight>
+
+      </View>
+
+      <View style={{
+        flex: 1,
+        flexDirection: 'row',
+        alignItems: 'center',
+        justifyContent: 'space-between'
+      }}>
+        <TouchableHighlight
+          activeOpacity={0.6}
+          underlayColor="#DDDDDD"
+        >
+          <Feather name="x" size={30} color="#4F8EF7"></Feather>
+        </TouchableHighlight>
+        <View style={{ flex: 1, alignItems: 'center', justifyContent: 'center', flexDirection: 'row' }}>
+          <Image
+            style={styles.images}
+            source={{
+              uri: data[pessoaIndex].image_three,
+            }}
+          />
+          <Image
+            style={styles.images}
+            source={{
+              uri: data[pessoaIndex].image_four,
+            }}
+          />
+        </View>
+        <TouchableHighlight
+          activeOpacity={0.6}
+          underlayColor="#DDDDDD"
+          onPress={advancePessoa}
+        >
+          <Entypo name="circle" size={30} color="#FF0000"></Entypo>
+        </TouchableHighlight>
+      </View>
+
+
     </>
   );
 }
 const styles = StyleSheet.create({
   tinyLogo: {
-    width: 50,
-    height: 50,
+    width: 120,
+    height: 100,
   },
   scrollView: {
     backgroundColor: Colors.lighter,
@@ -69,12 +148,24 @@ const styles = StyleSheet.create({
     padding: 4,
     paddingRight: 12,
     textAlign: 'right',
+    flex: 1,
+    flexDirection: 'row',
+    alignItems: 'center',
+    justifyContent: 'space-between',
+    borderBottomColor: 'rgb(249,249,249)',
+    backgroundColor: 'rgb(255,255,255)',
   },
-  container:{
+  container: {
     flex: 1,
     justifyContent: 'center',
-    alignItems:'center',
-  }
+    alignItems: 'center',
+    width: 120,
+    height: 100,
+  },
+  images: {
+    width: 120,
+    height: 100,
+  },
 });
 
 export default HomeScreen

@@ -17,7 +17,7 @@ function FooterMenuBttons(){
     activeOpacity={0.6}
     underlayColor="#DDDDDD"
     >
-    <Feather name="square" size={30} color="#FF69B4"></Feather>
+    <Feather name="square" size={20} color="#FF69B4"></Feather>
     </TouchableHighlight>
     <TouchableHighlight
     activeOpacity={0.6}
@@ -35,7 +35,7 @@ function FooterMenuBttons(){
     activeOpacity={0.6}
     underlayColor="#DDDDDD" 
     >
-    <Feather name="triangle" size={30} color="#90EE90"></Feather>
+    <Feather name="triangle" size={20} color="#90EE90"></Feather>
     </TouchableHighlight>
     </View>
     </>;
