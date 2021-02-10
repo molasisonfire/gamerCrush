@@ -1,21 +1,46 @@
 import React, { useState, useEffect } from 'react';
 import { Image, Button, Text, View, StatusBar, SafeAreaView, ScrollView, StyleSheet, TouchableHighlight } from 'react-native';
-import { NavigationContainer } from '@react-navigation/native';
-import { createStackNavigator } from '@react-navigation/stack';
-import HeaderMenu from '../Components/HeaderMenu';
-import FooterMenuBttons from '../Components/FooterMenuButtons';
 import { Colors } from 'react-native/Libraries/NewAppScreen';
 import Feather from 'react-native-vector-icons/Feather'
 import Entypo from 'react-native-vector-icons/Entypo'
+import AntDesign from 'react-native-vector-icons/AntDesign'
 import data from '../data';
+import AboutDescript from '../Components/AboutDescript'
 
 function HomeScreen({ navigation }) {
   var boleano = false;
   const [value, setValue] = useState(1);
   const [pessoaIndex,setIndex] = useState(0);
+  const [show, setShow] = useState(0);
 
-  const advancePessoa = () => setIndex(pessoaIndex+1);
-  const backPessoa = () => setIndex(pessoaIndex-1);
+  const swapAnimation = () => {
+    if (show == 0) {
+      setShow(1);
+      setTimeout(() => setShow(0), 0.6);
+     }
+    };
+
+  const advancePessoa = () => {
+    setIndex(pessoaIndex+1)
+    if (show == 0) {
+      setShow(1);
+      setTimeout(() => setShow(0), 600);
+     }
+  };
+  const negatePessoa = () => {
+    setIndex(pessoaIndex+1)
+    if (show == 0) {
+      setShow(2);
+      setTimeout(() => setShow(0), 600);
+     }
+  };
+  const backPessoa = () => {
+    setIndex(pessoaIndex-1)
+    if (show == 0) {
+      setShow(3);
+      setTimeout(() => setShow(0), 600);
+     }
+  };
   const incrementValue = () => setValue(value + 1);
 
   return (
@@ -66,7 +91,7 @@ function HomeScreen({ navigation }) {
         >
           <Feather name="triangle" size={20} color="#90EE90"></Feather>
         </TouchableHighlight>
-
+          
       </View>
 
       <View style={{
@@ -78,6 +103,7 @@ function HomeScreen({ navigation }) {
         <TouchableHighlight
           activeOpacity={0.6}
           underlayColor="#DDDDDD"
+          onPress={negatePessoa}
         >
           <Feather name="x" size={30} color="#4F8EF7"></Feather>
         </TouchableHighlight>
@@ -103,8 +129,18 @@ function HomeScreen({ navigation }) {
           <Entypo name="circle" size={30} color="#FF0000"></Entypo>
         </TouchableHighlight>
       </View>
-
-
+      <View style={{ flex: 1, alignItems: 'center', justifyContent: 'center', flexDirection: 'row' }}>
+      {(show == 1)? 
+      <AntDesign name="hearto" size={30} color="#FF0000"></AntDesign>:<View></View>
+      }
+      {(show == 2)? 
+      <Entypo name="emoji-sad" size={30} color="#FF0000"></Entypo>:<View></View>
+      }
+      {(show == 3)? 
+      <AntDesign name="reload1" size={30} color="#FF0000"></AntDesign>:<View></View>
+      }
+      </View>
+      <AboutDescript></AboutDescript>
     </>
   );
 }
