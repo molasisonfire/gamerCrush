@@ -5,7 +5,7 @@ class AboutDescript extends React.Component {
   render() {
     return (
       <View style={{ flex: 1, alignItems: 'center', justifyContent: 'center'}}>
-        <Text style={{fontSize: 30 }}> Sobre mim </Text>
+        <Text style={{fontSize: 30 }}> About Me </Text>
       </View>
     )
   }
